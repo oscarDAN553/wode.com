@@ -5,6 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Table(name = "productos")
 @Entity(name = "Producto")
 @Getter
@@ -20,14 +25,16 @@ public class Producto {
     private String contenido;
     private String precioCompra;
     private String precioVenta;
-    private String cantidad;
-    private String fechaCaducidad;
+    private Integer cantidad;
+    private Date fechaCaducidad;
     private String ubicacion;
     private String categoria;
     private String actualizar;
     private String activo;
 
     public Producto(DTORegistrarProducto dtoRegistrarProducto) {
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+
         this.marca = dtoRegistrarProducto.marca().toLowerCase();
         if (dtoRegistrarProducto.descripcion()== null || dtoRegistrarProducto.descripcion().isBlank()) {
             this.descripcion = "Sin descripcion";
@@ -37,7 +44,7 @@ public class Producto {
         this.contenido = dtoRegistrarProducto.contenido().toLowerCase();
         this.precioCompra = dtoRegistrarProducto.precioCompra();
         this.precioVenta = dtoRegistrarProducto.precioVenta();
-        this.cantidad = dtoRegistrarProducto.cantidad();
+        this.cantidad = Integer.parseInt(dtoRegistrarProducto.cantidad());
         this.fechaCaducidad = dtoRegistrarProducto.fechaCaducidad();
         this.ubicacion = dtoRegistrarProducto.ubicacion().toLowerCase();
         this.categoria = dtoRegistrarProducto.categoria().toLowerCase();

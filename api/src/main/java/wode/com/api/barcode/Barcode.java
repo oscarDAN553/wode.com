@@ -17,7 +17,7 @@ public class Barcode {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long idProducto;
-    private String barcode;
+    private Long barcode;
     private String activo;
 
     public Barcode(DTORegistrarBarcode dtoRegistrarBarcode) {

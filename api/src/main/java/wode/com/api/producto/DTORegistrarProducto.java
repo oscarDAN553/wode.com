@@ -2,7 +2,10 @@ package wode.com.api.producto;
 
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+
+import java.util.Date;
 
 public record DTORegistrarProducto(
         @NotBlank
@@ -19,9 +22,9 @@ public record DTORegistrarProducto(
         @NotBlank
         @Pattern(regexp = "^[1-9]\\d*$")//solo numeros enteros positivos
         String cantidad,
-        @NotBlank
-        @Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$")//fecha en formato YYYY/MM/DD
-        String fechaCaducidad,
+        @NotNull
+        //@Pattern(regexp = "^\\d{4}-\\d{2}-\\d{2}$")//fecha en formato YYYY/MM/DD
+        Date fechaCaducidad,
         @NotBlank
         String ubicacion,
         @NotBlank

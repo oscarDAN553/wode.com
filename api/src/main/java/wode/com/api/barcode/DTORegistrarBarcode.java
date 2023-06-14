@@ -6,10 +6,10 @@ import jakarta.validation.constraints.Pattern;
 
 public record DTORegistrarBarcode(
         @NotNull
-        //@Pattern(regexp = "^[1-9]\\d*$")
+        //@Pattern(regexp = "^[1-9]\\d*$") al ser de tipo long no permite la validacion regex
         Long idProducto,
-        @NotBlank
-        @Pattern(regexp = "^[1-9]\\d*$")
-        String barcode
+        @NotNull
+        //@Pattern(regexp = "^[1-9]\\d*$")
+        Long barcode
 ) {
 }
