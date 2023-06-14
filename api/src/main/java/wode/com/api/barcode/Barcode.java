@@ -1,4 +1,4 @@
-package wode.com.api.Barcode;
+package wode.com.api.barcode;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
