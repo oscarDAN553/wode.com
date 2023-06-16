@@ -6,7 +6,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -50,5 +49,13 @@ public class Producto {
         this.categoria = dtoRegistrarProducto.categoria().toLowerCase();
         this.actualizar = "0";
         this.activo = "1";
+    }
+
+    public void actualizarCantidad(DTOBuscarProducto dtoVentaProducto) {
+        this.cantidad -= dtoVentaProducto.cantidad();
+    }
+
+    public void desactivarProducto() {
+        this.activo = "0";
     }
 }
