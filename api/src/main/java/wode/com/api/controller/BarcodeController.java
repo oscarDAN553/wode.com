@@ -1,11 +1,10 @@
 package wode.com.api.controller;
 
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import wode.com.api.barcode.Barcode;
 import wode.com.api.barcode.BarcodeRepository;
 import wode.com.api.barcode.DTORegistrarBarcode;
@@ -18,5 +17,12 @@ public class BarcodeController {
     @PostMapping
     public void registrarBarcode (@RequestBody @Valid DTORegistrarBarcode dtoRegistrarBarcode){
            barcodeRepository.save(new Barcode(dtoRegistrarBarcode));
+    }
+    @DeleteMapping
+    @Transactional
+    public ResponseEntity<Barcode> DesactivarBarcode(@RequestParam("id") Long id){
+         Barcode codigo = barcodeRepository.findByIdContaining(id);
+         codigo.desactivarBarcode();
+         return null;
     }
 }

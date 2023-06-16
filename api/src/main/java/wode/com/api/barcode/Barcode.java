@@ -25,4 +25,8 @@ public class Barcode {
         this.barcode = dtoRegistrarBarcode.barcode();
         this.activo = "1";
     }
+
+    public void desactivarBarcode() {
+        this.activo = "0";
+    }
 }

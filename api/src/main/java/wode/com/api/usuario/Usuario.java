@@ -21,7 +21,7 @@ public class Usuario {
     private String nombre;
     private String horario;
     private String sucursal;
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private Cargo cargo;
     private String activo;
 
@@ -29,7 +29,11 @@ public class Usuario {
         this.nombre = dtoRegistrarUsuario.nombre().toLowerCase();
         this.horario = dtoRegistrarUsuario.horario().toLowerCase();
         this.sucursal = dtoRegistrarUsuario.sucursal().toLowerCase();
-        this.cargo = Cargo.valueOf(dtoRegistrarUsuario.cargo().toUpperCase());
+        this.cargo = dtoRegistrarUsuario.cargo();
         this.activo = "1";
+    }
+
+    public void desactivarUsuario() {
+        this.activo = "0";
     }
 }

@@ -3,10 +3,7 @@ package wode.com.api.ticket;
 import jakarta.persistence.*;
 import lombok.*;
 
-
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.List;
 
 @Table(name = "tickets")
 @Entity(name = "Ticket")
@@ -29,5 +26,9 @@ public class Ticket {
         this.total = dtoTiket.total();
         this.listadoProductos = dtoTiket.listadoProductos().toString();
         this.activo = "1";
+    }
+
+    public void desactivarTicket() {
+        this.activo = "0";
     }
 }
